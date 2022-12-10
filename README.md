@@ -31,13 +31,6 @@ curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json"
 # Delete MySQL connector
 curl -X DELETE http://localhost:8083/connectors/example-connector
 
-# Consume messages from a Debezium topic
-docker-compose exec kafka /kafka/bin/kafka-console-consumer.sh \
-    --bootstrap-server kafka:9092 \
-    --from-beginning \
-    --property print.key=true \
-    --topic dbserver1.inventory.customers
-
 # Modify records in the database via MySQL client
 docker-compose exec mysql bash -c 'mysql -u root -p$MYSQL_PASSWORD mysql'
 
